@@ -23,6 +23,7 @@ class Solution {
             }
 
             if(j>=k){
+                while(i<nums.length-1 && nums[i]==nums[i+1]) i++;
                 i++;
                 j = i+1;
                 k = nums.length-1;
