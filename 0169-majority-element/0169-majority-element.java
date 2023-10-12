@@ -1,20 +1,14 @@
 class Solution {
     public int majorityElement(int[] nums) {
         int n = nums.length;
-        Map<Integer, Integer> freqMap = new HashMap<>();
+        int votes = 0;
+        int leader = nums[0];
 
-        for(int key: nums){
-            if(!freqMap.containsKey(key)){
-                freqMap.put(key, 0);
-            }
-            int value = freqMap.get(key);
-            freqMap.put(key, value+1);
+        for(int member: nums){
+            if(member==leader) votes+=1;
+            else if(votes!=0) votes-=1;
+            else leader = member;
         }
-
-        for(int key: freqMap.keySet()){
-            int value = freqMap.get(key);
-            if(value>n/2) return key;
-        }
-        return -1;
+        return leader;
     }
 }
